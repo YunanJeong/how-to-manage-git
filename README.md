@@ -2,11 +2,11 @@
 매번 깜빡하는 내용. 개인 참고용 메모.
 
 ## 잔디심기 오류
-- 깃허브에 등록된 email과 name이 local git의 email과 name이 다르면 커밋 내역이 안보인다.
-- 다음 명령어를 로컬 터미널환경에서 설정해주자.
+- 깃허브에 등록된 {name, email}과 local git의 {name, email}이 다르면 커밋 내역이 안보인다.
+- 로컬 터미널환경에서 다음 명령어로 설정해주자.
   - `$git config --global user.name "{github유저이름}"`
   - `$git config --global user.email "{github에 등록된 이메일}"`
-  - password는 token을 사용하기 때문에 global에 등록하지 않고, repository별로 등록한다. (보안, 토큰 만료 등 이유)
+  - password는 token을 사용하기 때문에 global옵션으로 등록하지 않고, repository별로 등록한다. (보안, 토큰 만료 등 이유)
 
 - 확인
   `$git config --list`
@@ -22,4 +22,6 @@
   - `우측상단 프로필-"Settings"-"Developer Settings"-"personal access tokens"` 에서 진행
 - 토큰 권한은 repo 항목만 체크해줘도 일반적 사용에 충분하다.
 
-- 참고: https://hyeo-noo.tistory.com/184
+- 참고
+  - https://hyeo-noo.tistory.com/184
+  - https://curryyou.tistory.com/344
