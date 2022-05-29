@@ -1,7 +1,7 @@
 # how-to-set-gituserinfo
-- 개인 참고용
+개인 참고용
 
-##잔디심기 오류
+## 잔디심기 오류
 - 깃허브에 등록된 email과 name이 local git의 email과 name이 다르면 커밋 내역이 안보인다.
 - 다음 명령어를 로컬 터미널환경에서 설정해주자.
   `$git config --global user.name "{github유저이름}"`
