@@ -1,5 +1,5 @@
 # how-to-set-gituserinfo
-개인 참고용
+매번 깜빡하는 내용. 개인 참고용 메모.
 
 ## 잔디심기 오류
 - 깃허브에 등록된 email과 name이 local git의 email과 name이 다르면 커밋 내역이 안보인다.
