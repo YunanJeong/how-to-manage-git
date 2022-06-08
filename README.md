@@ -30,5 +30,38 @@
 ## 디렉토리 별 git config 다르게 설정하기
 - git config 설정파일(.gitconfig) 찾기
 	- 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다.
-	-`$git config --list -show-origin`
+	- `$git config --list -show-origin`
+
+## .gitconfig 파일 수정
+
+- 기존 다음과 같이 [user]부분을,
+```
+[user]
+	email = myMail@gmail.com
+	name = yunanjeong
+```
+
+- 아래와 같이 변경한다. 디렉토리에 따라 다른 git 정보를 가져오도록 하는 조건문이다.
+- `~/private/`은 개인용 디렉토리, `~/works/`는 업무용 디렉토리를 의미한다.
+- `.gitconfig-private`과 `.gitconfig-company` 는 별도로 생성할 파일이다.
+```
+[includeIf "gitdir:~/private/"]
+	path = .gitconfig-private
+[includeIf "gitdir:~/works/"]
+	path = .gitconfig-company
+```
+
+- .gitconfig-private
+```
+[user]
+	email = myMail@gmail.com
+	name = yunanjeong
+```
+
+- .gitconfig-company
+```
+[user]
+	email = myPublicMail@company.com
+	name = yunanjeong
+```
 
