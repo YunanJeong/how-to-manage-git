@@ -25,3 +25,7 @@
 - 참고
   - https://hyeo-noo.tistory.com/184
   - https://curryyou.tistory.com/344
+
+------------------------------
+## 디렉토리 별 git config 다르게 설정하기
+
