@@ -4,6 +4,7 @@
 ## 잔디심기 오류
 - 깃허브에 등록된 {name, email}과 local git의 {name, email}이 다르면 커밋 내역이 안보인다.
 - 로컬 터미널환경에서 다음 명령어로 설정해주자.
+- 유저이름은 대소문자 구분이 없는 듯 하다.
   - `$git config --global user.name "{github유저이름}"`
   - `$git config --global user.email "{github에 등록된 이메일}"`
   - password는 token을 사용하기 때문에 global옵션으로 등록하지 않고, repository별로 등록한다. (보안, 토큰 만료 등 이유)
@@ -32,17 +33,16 @@
 	- 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다.
 	- `$git config --list -show-origin`
 
-## .gitconfig 파일 수정
 
-- 기존 다음과 같이 [user]부분을,
+- 다음과 같이 기존 .gitconfig 파일에 있는 [user]부분을,
 ```
 [user]
 	email = myMail@gmail.com
 	name = yunanjeong
 ```
 
-- 아래와 같이 변경한다. 디렉토리에 따라 다른 git 정보를 가져오도록 하는 조건문이다.
-- `~/private/`은 개인용 디렉토리, `~/works/`는 업무용 디렉토리를 의미한다.
+- 아래와 같이 변경한다. 디렉토리에 따라 다른 git설정파일를 가져오는 조건문이다.
+- `~/private/`은 개인용 디렉토리, `~/works/`는 업무용 디렉토리를 나타낸 예시이다.
 - `.gitconfig-private`과 `.gitconfig-company` 는 별도로 생성할 파일이다.
 ```
 [includeIf "gitdir:~/private/"]
@@ -61,7 +61,8 @@
 - .gitconfig-company
 ```
 [user]
-	email = myPublicMail@company.com
-	name = yunanjeong
+	email = myCompanyMail@company.com
+	name = myCompanyName
 ```
 
+- 만약 기존 .gitconfig파일에 [user]외에 세팅값이 있다면 공통 적용된다. ex) [core] 설정 등
