@@ -28,4 +28,7 @@
 
 ------------------------------
 ## 디렉토리 별 git config 다르게 설정하기
+- git config 설정파일(.gitconfig) 찾기
+	- 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다.
+	-`$git config --list -show-origin`
 
