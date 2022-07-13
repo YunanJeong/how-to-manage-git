@@ -50,6 +50,13 @@
 [includeIf "gitdir:~/works/"]
 	path = .gitconfig-company
 ```
+- Windows용 Git 사용시, 다음과 같이 적는다.
+```
+[includeIf "gitdir/i:c:/private/"]
+        path = .gitconfig-private
+[includeIf "gitdir/i:c:/works/"]
+        path = .gitconfig-works
+```
 
 - .gitconfig-private
 ```
@@ -66,6 +73,7 @@
 ```
 
 - 만약 기존 .gitconfig파일에 [user]외에 세팅값이 있다면 공통 적용된다. ex) [core] 설정 등
+
 
 ## 프로젝트 별 git config 다르게 설정하기 (local설정)
 - 프로젝트 경로 내, .git 하위에서 설정 파일을 찾을 수 있다.
