@@ -28,11 +28,11 @@
   - https://curryyou.tistory.com/344
 
 ------------------------------
-## 디렉토리 별 git config 다르게 설정하기
+## 디렉토리 별 git config 다르게 설정하기(global설정)
 - git config 설정파일(.gitconfig) 찾기
+	- `$git config --list --show-origin`
 	- 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다.
-	- `$git config --list -show-origin`
-
+	- Windows는 git 설치 후, C:\\Program Files\\Git\\etc\\gitconfig
 
 - 다음과 같이 기존 .gitconfig 파일에 있는 [user]부분을,
 ```
@@ -66,3 +66,6 @@
 ```
 
 - 만약 기존 .gitconfig파일에 [user]외에 세팅값이 있다면 공통 적용된다. ex) [core] 설정 등
+
+## 프로젝트 별 git config 다르게 설정하기 (local설정)
+- 프로젝트 경로 내, .git 하위에서 설정 파일을 찾을 수 있다.
