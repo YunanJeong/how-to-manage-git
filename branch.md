@@ -14,13 +14,6 @@
 - origin/main: 원격 저장소
 - main: 로컬 저장소
 ------------------------------
-## checkout
-- git 작업시 항상 시작전에 작업할 branch를 선택 및 확인하자
-- main 외에 새로운 branch를 만들어서 이제부터 해당 branch를 사용할것이라고 선언(checkout)하지 않는 이상,모든 작업은 main에 속한다.
-
-## stash
-- 작업 중 checkout하여 branch를 변경할 때, 충돌 파일이 있다면(기존 변경내역은 있으나 커밋은 하지 않은 상태), 현재 branch에서 변경내역을 임시저장소에 기록해두었다가 새로 전환한 branch에서 불러와 커밋할 수 있는 기능. 자주 쓰지는 않을 듯 싶다.
-------------------------------
 ## How to use branch
 - 새 branch 생성
 	- `$git branch {branchname}`
@@ -30,6 +23,8 @@
 	- branch 전환시, Working Directory(실제 작업 경로)는 선택된 branch의 최신상태로 바뀐다.
 		- 전환하고 파일이 삭제, 수정되었다고 놀라지말자. 다른 branch로 잘 백업되어 있다.
 	- 급하게 다른 branch로 전환하여 작업이 필요하다면, 항상 현재까지 작업물은 commit 단계까지 수행해놓고 전환하는 것이 충돌방지에 좋다.
+    - `git 작업시 항상 시작 전 작업할 branch를 선택 및 확인하자`
+    - main 외에 새로운 branch를 만들어서 이제부터 해당 branch를 사용할것이라고 선언(checkout)하지 않는 이상,모든 작업은 main에 속한다.
 	- HEAD?
 		- 모든 branch에 HEAD(선두) 값이 존재한다. HEAD는 해당 branch의 마지막 commit을 의미한다.
 
@@ -70,3 +65,7 @@
 	- 로컬 저장소에서 원격 저장소의 main으로 직접 push를 자제하도록 하자.
 		- git flow 등 규격을 사용하는 정도는 아니라도, main과 feature 브랜치들 사이에 develop 브랜치 등을 두도록 하자.
 		- main은 라이브 서비스 용도
+
+------------------------------
+## stash
+- 작업 중 checkout하여 branch를 변경할 때, 충돌 파일이 있다면(기존 변경내역은 있으나 커밋은 하지 않은 상태), 현재 branch에서 변경내역을 임시저장소에 기록해두었다가 새로 전환한 branch에서 불러와 커밋할 수 있는 기능. 자주 쓰지는 않을 듯 싶다.
