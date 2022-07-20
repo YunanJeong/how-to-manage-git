@@ -20,11 +20,13 @@
 - branch 전환
 	- `$git branch`: branch 목록 및 현재 선택된 branch 확인
 	- `$git checkout {branchname}`: 작업할 branch 선택
-	- branch 전환시, Working Directory(실제 작업 경로)는 선택된 branch의 최신상태로 바뀐다.
+        - `git 작업시 항상 시작 전 작업할 branch를 선택 및 확인하자`
+        - main 외에 새로운 branch를 만들어서 이제부터 해당 branch를 사용할것이라고 선언(checkout)하지 않는 이상,모든 작업은 main에 속한다.
+	- branch 전환시,
+        - Working Directory(실제 작업 경로)는 선택된 branch의 최신상태로 바뀐다.
 		- 전환하고 파일이 삭제, 수정되었다고 놀라지말자. 다른 branch로 잘 백업되어 있다.
-	- 급하게 다른 branch로 전환하여 작업이 필요하다면, 항상 현재까지 작업물은 commit 단계까지 수행해놓고 전환하는 것이 충돌방지에 좋다.
-    - `git 작업시 항상 시작 전 작업할 branch를 선택 및 확인하자`
-    - main 외에 새로운 branch를 만들어서 이제부터 해당 branch를 사용할것이라고 선언(checkout)하지 않는 이상,모든 작업은 main에 속한다.
+	    - 항상 현재까지 작업물은 commit 단계까지 수행해놓고 전환하는 것이 충돌방지에 좋다.
+
 	- HEAD?
 		- 모든 branch에 HEAD(선두) 값이 존재한다. HEAD는 해당 branch의 마지막 commit을 의미한다.
 
