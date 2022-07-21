@@ -1,5 +1,4 @@
 # 용어, 브랜치 관리 및 헷갈리는 부분 메모
-오류 있을 수 있음. 개인적으로 헷갈리는 부분들을 단순 메모.
 
 ## 'origin' 표현
 - 원격 저장소의 약칭 (shorthand name for remote repository)
