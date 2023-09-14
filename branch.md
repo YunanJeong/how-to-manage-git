@@ -101,7 +101,7 @@ git status
 
 모든 명령어는 저장소 전체가 아니라 branch 단위를 대상으로 한다.
 
-`git push`와 `git pull`는 편의상 옵션이 생략된 것이고, main 브랜치를 대상으로 한다.
+`git push`와 `git pull`는 편의상 옵션이 생략된 것이고, 현재 작업중(checkout)인 로컬 branch 이름을 대상으로 한다. git 버전 마다 동작이 조금씩 다를 수 있는데, 명령어 에러 발생시 터미널 출력 내용을 참고하면 된다.
 
 ### git push
 
@@ -110,7 +110,7 @@ git status
 
 ```sh
 # git push {원격저장소약칭} {branchname}
-git push                 # 로컬 main을 원격 main에 반영
+git push                 # 작업 중인 branch를 원격 branch에 반영
 git push origin main     # 로컬 main을 원격 main에 반영
 git push origin feature  # 로컬 feature를 원격 feature에 반영
 ```
@@ -131,7 +131,11 @@ git push origin feature  # 로컬 feature를 원격 feature에 반영
 
 ```sh
 # git pull {원격저장소약칭} {branchname}
-git pull                 # 원격 main을 로컬 main에 반영
+
+# 원격 branch를 로컬 branch에 반영
+# 현재 작업중인 로컬 branch와 동일한 이름의 원격 branch를 찾는다. 해당 branch가 없으면 에러 발생
+git pull                 
+
 git pull origin main     # 원격 main을 로컬 main에 반영
 git pull origin feature  # 원격 feature를 로컬 feature에 반영
 ```
