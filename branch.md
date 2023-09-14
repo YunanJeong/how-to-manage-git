@@ -71,9 +71,9 @@ git merge feature
 git branch -d {branchname}
 ```
 
-### 현재 변경사항을 다른 브랜치에 커밋하기
+### git stash (현재 변경사항을 다른 브랜치에 커밋하기)
 
-- e.g. main branch에 작업하다가 `아?맞다. 다른 branch에 commit 해야됐었는데!!!`같은 경우
+- e.g. main branch에 작업하다가 `아?맞다. 다른 branch에 commit 해야됐었는데!!!`같은 경우에 사용
 
 ```sh
 # 커밋없이 현재 변경내역(git status했을 때 대상들) 임시저장하기
@@ -89,42 +89,55 @@ git stash pop
 git status
 ```
 
-## 병합시 branch끼리 충돌 해결
+### git merge시 branch끼리 충돌 해결 방법
 
-- 한 repository의 디렉토리 및 파일이 잘게 쪼개져있으면 merge 자체를 쓸 일이 적지만,
-- 같은 파일을 여러 사람이 작업할시 충돌은 필연적이다.
-- merge 절차에서 충돌이 발생하면, 해당 파일을 열어보면 충돌내역이 표기되어 있다.
+- 한 저장소에서도 개별 디렉토리, 파일 단위로 작업을 하는 등, 가급적 충돌 자체를 피하는게 좋다.
+- But, 같은 파일을 여럿이 작업할시 충돌은 필연적이다.
+- merge 절차에서 충돌 발생시, 해당 파일을 열어보면 충돌내역이 표기되어 있다.
 - 적절히 수정하여 commit 한다.
 - merge 절차를 다시 수행한다.
 
 ## 원격과 로컬 저장소 사이 관리
 
-- `$git pull`을 사용하여 로컬 저장소를 최신 버전으로 업데이트하는 경우
-  - pull은 "원격에서 로컬로, 데이터 가져오기(fetch) + 병합(merge)"이 합쳐진 기능이다.
-  - 원격, 로컬 저장소 각각 업데이트 내역이 있을 때,
-    - 서로 충돌파일이 없다면 문제없이 "로컬 저장소"로 병합된다.
-    - 이후, commit 및 push하면 원격에도 최종본이 업데이트 된다.
+모든 명령어는 저장소 전체가 아니라 branch 단위를 대상으로 한다.
 
-- `$git fetch`
-  - git pull로 업데이트시, 충돌 파일이 있을 것으로 예상될 때 사용할 수 있다.
-  - fetch는 원격 저장소의 데이터를 별도 branch로 로컬 저장소에 다운로드한다.
-  - 로컬 저장소에서 두 branch의 충돌부분을 직접 수동작업하여 commit 및 merge한다.
+`git push`와 `git pull`는 편의상 옵션이 생략된 것이고, main 브랜치를 대상으로 한다.
 
-- `$ git push {원격 저장소 약칭} {branchname}`
-  - 로컬의 특정 branch를 원격 저장소로 업데이트한다.
-  - 일반적으로 `$git push` 사용시, `$git push origin main`을 의미한다.
-  - 로컬 저장소에서 원격 저장소의 main으로 직접 push를 자제하도록 하자.
-    - git flow 등 규격을 사용하는 정도는 아니라도, main과 feature 브랜치들 사이에 develop 브랜치 등을 두도록 하자.
-    - main은 라이브 서비스 용도
+### git push
 
-## stash
+- 로컬 저장소의 branch 내용을 원격 저장소의 branch에 반영
+- 충돌로 인해 push 실패시, 먼저 pull을 써서 원격 내용을 로컬에 반영해줘야 한다.
 
-- 작업 중 checkout하여 branch를 변경할 때, 충돌 파일이 있다면(기존 변경내역은 있으나 커밋은 하지 않은 상태), 현재 branch에서 변경내역을 임시저장소에 기록해두었다가 새로 전환한 branch에서 불러와 커밋할 수 있는 기능. 자주 쓰지는 않을 듯 싶다.
+```sh
+# git push {원격저장소약칭} {branchname}
+git push                 # 로컬 main을 원격 main에 반영
+git push origin main     # 로컬 main을 원격 main에 반영
+git push origin feature  # 로컬 feature를 원격 feature에 반영
+```
 
-## 원격 저장소에 대해 branch를 git push, pull 
+- 일반적으로 production ready수준에선, 원격 main에 직접 push는 권장되지 않는다.
+  - git flow 등의 정책을 사용하거나,
+  - feature, develop 등의 이름으로 여러 branch를 생성하여 역할을 분리 하는 것이 좋다.
+  - main은 실제 배포되는 라이브 서비스 용도로 사용하면 좋다.
 
-기본적으로 쓰는 git push, pull은 로컬 main branch와 원격 main branch에 대한 것이고, 편의상 생략된 것이다.
+### git pull
 
-별도 branch에 대해 git push, pull 하고 싶다면 옵션을 붙여줘야 한다.
+- 원격 저장소의 branch 내용을 로컬 저장소의 branch에 반영
+- `데이터 가져오기(fetch) + 병합(merge)`이 합쳐진 기능
+- 원격, 로컬 저장소에서 각각 업데이트 내역이 있을 때, git pull
+  - 서로 충돌파일이 없다면, 문제없이 "로컬 저장소"로 병합된다.
+  - 충돌 파일이 있다면, 위 merge 케이스처럼 별도 처리 필요
+  - 이후, commit 및 push하면 원격에도 최종본이 업데이트 된다.
 
-어차피 main 외 branch에서 git push 시도시, 터미널에 뜨니까 외울 필요는 없다.
+```sh
+# git pull {원격저장소약칭} {branchname}
+git pull                 # 원격 main을 로컬 main에 반영
+git pull origin main     # 원격 main을 로컬 main에 반영
+git pull origin feature  # 원격 feature를 로컬 feature에 반영
+```
+
+### git fetch
+
+- `git pull 사용시 로컬 저장소에서 충돌 파일이 있을 것으로 예상될 때 사용`
+- git fetch로 원격 저장소의 변경사항을 별도 branch로 로컬 저장소에 다운로드
+- 로컬 저장소에서 두 branch의 충돌부분을 직접 수동작업하여 commit 및 merge한다.
