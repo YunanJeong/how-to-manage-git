@@ -20,6 +20,12 @@
 
 ## How to use branch
 
+### 특정 branch만 원격 저장소에서 다운로드
+
+```sh
+git clone {URL} -b {branchname}
+```
+
 ### 새 branch 생성
 
 ```sh
