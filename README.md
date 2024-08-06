@@ -7,3 +7,7 @@
 [여러 레포지토리 통합 방법](https://github.com/YunanJeong/how-to-manage-git/blob/main/integration.md)
 
 [태그 및 버전 관리](https://github.com/YunanJeong/how-to-manage-git/blob/main/tag.md)
+
+[.gitattributes](https://github.com/YunanJeong/how-to-manage-git/blob/main/.gitattributes)
+
+[.gitignore](https://github.com/YunanJeong/how-to-manage-git/blob/main/.gitignore)

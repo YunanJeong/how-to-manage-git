@@ -1,0 +1,7 @@
+# git add . 시 포함되지 않도록 할 항목들
+
+# 임시파일, 데이터, 보안파일 등을 기술
+temp/
+data/
+config/
+venv
