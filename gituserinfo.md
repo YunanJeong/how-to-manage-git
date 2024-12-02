@@ -36,8 +36,8 @@
 ## 디렉토리 별 git config 다르게 설정하기(global설정)
 
 - git config 설정파일(.gitconfig) 찾기
-  - `$git config --list --show-origin`
-  - 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다.
+  - `git config --list --show-origin`
+  - 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다. 없으면 홈 경로에 만들면 된다.
   - Windows는 git 설치 후, C:\\Program Files\\Git\\etc\\gitconfig
 
 - 다음과 같이 기존 .gitconfig 파일에 있는 [user]부분을,
