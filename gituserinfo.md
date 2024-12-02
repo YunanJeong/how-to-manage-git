@@ -37,10 +37,10 @@
 
 - git config 설정파일(.gitconfig) 찾기
   - `git config --list --show-origin`
-  - 일반적으로 Ubuntu나 Mac의 경우 홈디렉토리에 있다. 없으면 홈 경로에 만들면 된다.
-  - Windows는 git 설치 후, C:\\Program Files\\Git\\etc\\gitconfig
+  - Ubuntu, Mac의 경우 일반적으로 홈디렉토리에 있다. 없으면 만들면 된다.
+  - Windows는 git 설치 후, `C:\\Program Files\\Git\\etc\\gitconfig`
 
-- 다음과 같이 기존 .gitconfig 파일에 있는 [user]부분을,
+- 다음과 같이 기존 .gitconfig 파일의 [user] 내용이 있다면 삭제하고,
 
 ```conf
 [user]
@@ -68,7 +68,7 @@
         path = .gitconfig-works
 ```
 
-- .gitconfig-private
+- .gitconfig-private (.gitconfig와 동일경로에 생성)
 
 ```conf
 [user]
@@ -76,7 +76,7 @@
   name = yunanjeong
 ```
 
-- .gitconfig-company
+- .gitconfig-company (.gitconfig와 동일경로에 생성)
 
 ```conf
 [user]
