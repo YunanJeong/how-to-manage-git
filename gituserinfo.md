@@ -35,12 +35,13 @@
 
 ## 디렉토리 별 git config 다르게 설정하기(global설정)
 
-- git config 설정파일(.gitconfig) 찾기
-  - `git config --list --show-origin`
-  - Ubuntu, Mac의 경우 일반적으로 홈디렉토리에 있다. 없으면 만들면 된다.
-  - Windows는 git 설치 후, `C:\\Program Files\\Git\\etc\\gitconfig`
+### git config 설정파일(.gitconfig) 찾기
 
-- 다음과 같이 기존 .gitconfig 파일의 [user] 내용이 있다면 삭제하고,
+- `git config --list --show-origin`
+- Ubuntu, Mac의 경우 일반적으로 홈디렉토리에 있다. 없으면 만들면 된다.
+- Windows는 git 설치 후, `C:\\Program Files\\Git\\etc\\gitconfig`
+
+### 다음과 같이 기존 .gitconfig 파일의 [user] 내용이 있다면 삭제
 
 ```conf
 [user]
@@ -48,40 +49,42 @@
   name = yunanjeong
 ```
 
-- 아래와 같이 변경한다. 디렉토리에 따라 다른 git설정파일를 가져오는 조건문이다.
+### .gitconfig 작성 내용
+
+- 디렉토리에 따라 다른 git설정파일이 적용되는 조건문이다.
 - `~/private/`은 개인용 디렉토리, `~/works/`는 업무용 디렉토리를 나타낸 예시이다.
-- `.gitconfig-private`과 `.gitconfig-company` 는 별도로 생성할 파일이다.
+- `.gitconfig-private`과 `.gitconfig-works` 는 각각 적용될 git설정파일 이름이고, 별도 생성해야 한다.
 
 ```conf
+# Ubuntu # Apply gitconfig according to the working directory
 [includeIf "gitdir:~/private/"]
   path = .gitconfig-private
 [includeIf "gitdir:~/works/"]
-  path = .gitconfig-company
+  path = .gitconfig-works
 ```
 
-- Windows용 Git 사용시, 다음과 같이 적는다.
-
 ```conf
+# Windows # Apply gitconfig according to the working directory
 [includeIf "gitdir/i:c:/private/"]
         path = .gitconfig-private
 [includeIf "gitdir/i:c:/works/"]
         path = .gitconfig-works
 ```
 
-- .gitconfig-private (.gitconfig와 동일경로에 생성)
+- `.gitconfig`와 동일한 경로에 개별 config 파일(`.gitconfig-private`, `.gitconfig-works`)을 생성
 
 ```conf
+# .gitconfig-private
 [user]
   email = myMail@gmail.com
   name = yunanjeong
 ```
 
-- .gitconfig-company (.gitconfig와 동일경로에 생성)
-
 ```conf
+# .gitconfig-works
 [user]
   email = myCompanyMail@company.com
-  name = myCompanyName
+  name = myCompanyNickName
 ```
 
 - 만약 기존 .gitconfig파일에 [user]외에 세팅값이 있다면 공통 적용된다. ex) [core] 설정 등
