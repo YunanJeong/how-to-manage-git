@@ -11,3 +11,7 @@
 [.gitattributes](https://github.com/YunanJeong/how-to-manage-git/blob/main/.gitattributes)
 
 [.gitignore](https://github.com/YunanJeong/how-to-manage-git/blob/main/.gitignore)
+
+# 기타
+
+[여러 로컬저장소에서 만료된 git토큰을 일괄 교체하는 스크립트](https://github.com/YunanJeong/how-to-manage-git/blob/main/.change_token.sh)
