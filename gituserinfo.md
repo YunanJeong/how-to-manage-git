@@ -88,6 +88,24 @@
 ```
 
 - 만약 기존 .gitconfig파일에 [user]외에 세팅값이 있다면 공통 적용된다. ex) [core] 설정 등
+  
+### 각 레포지토리에 PAT(인증토큰)을 두지말고, 중앙관리하기
+
+```conf
+# .gitconfig-private
+[user]
+  email = myMail@gmail.com
+  name = yunanjeong
+[credential]
+  helper = store --file=~/.git-credentials-private
+```
+```conf
+# ~/.git-credentials-private
+https://{MY_NAME}:{MY_PAT_GITTOKEN}@github.com
+```
+
+
+
 
 ## 프로젝트 별 git config 다르게 설정하기 (local설정)
 
