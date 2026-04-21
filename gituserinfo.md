@@ -105,7 +105,7 @@ https://{MY_NAME}:{MY_PAT_GITTOKEN}@github.com
 ```
 
 - 이러면 최초 Push시엔 name과 password(토큰)을 요구하는데, 이후로는 입력정보를 요구하지 않고, ~/.git-credenttials-private을 가져다 쓴다.
-.
+..
 
 
 
