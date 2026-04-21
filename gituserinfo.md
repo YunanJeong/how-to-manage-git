@@ -97,16 +97,14 @@
   email = myMail@gmail.com
   name = yunanjeong
 [credential]
-  helper = store --file=~/.git-credentials-private
+  helper = store --file=$HOME/.git-credentials-private
 ```
 ```conf
 # ~/.git-credentials-private
 https://{MY_NAME}:{MY_PAT_GITTOKEN}@github.com
 ```
 
-- 이러면 최초 Push시엔 name과 password(토큰)을 요구하는데, 이후로는 입력정보를 요구하지 않고, ~/.git-credenttials-private을 가져다 쓴다.
-..
-
+-  이후 private 경로에 한해서 개별 레포지토리마다 인증정보가 입력되어있지 않더라도,  ~/.git-credentials-private을 가져다 쓴다.
 
 
 ## 프로젝트 별 git config 다르게 설정하기 (local설정)
