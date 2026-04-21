@@ -151,4 +151,10 @@ git config --list
 https://yunanjeong:ghp_MY_TOKEN@github.com
 ```
 
+```sh
+# 보안상 credential 파일은 600 권한
+sudo chown -R $USER:$USER ~/.git-credentials-private
+sudo chmod 600 ~/.git-credentials-private
+```
+
 이후 `~/private/` 하위 레포에서는 인증정보가 없어도 `~/.git-credentials-private`을 가져다 쓴다.
